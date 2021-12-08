@@ -1,6 +1,10 @@
 const chalk = require("chalk");
 const yargs = require("yargs");
-const notes = require("./notes");
+const createNote = require("./modules/create");
+const readNote = require("./modules/read");
+const deleteNote = require("./modules/delete");
+const updateNote = require("./modules/update");
+const listNotes = require("./modules/list");
 
 const success = chalk.green.inverse.bold;
 const erro = chalk.white.underline.bgRed;
@@ -25,7 +29,7 @@ yargs.command({
     },
   },
   handler: function (argv) {
-    notes.addNote(argv.title, argv.body);
+    createNote(argv.title, argv.body);
   },
 });
 
@@ -42,7 +46,7 @@ yargs.command({
   },
   handler: function (argv) {
     console.log(success("Note removed"));
-    notes.removeNotes(argv.title);
+    deleteNote(argv.title);
   },
 });
 
@@ -52,7 +56,7 @@ yargs.command({
   describe: "List notes",
   handler: function () {
     console.log(success("Listing notes"));
-    notes.listNotes();
+    listNotes();
   },
 });
 
@@ -60,8 +64,34 @@ yargs.command({
 yargs.command({
   command: "read",
   describe: "read",
-  handler: function () {
-    console.log(success("reading a note"));
+  handler: function (argv) {
+    readNote(argv.title);
+  },
+});
+
+// UPDATE
+yargs.command({
+  command: "update",
+  describe: "update",
+  builder: {
+    title: {
+      describe: "existing note title",
+      type: "string",
+      demandOption: true,
+    },
+    newTitle: {
+      describe: "New Note title",
+      type: "string",
+      demandOption: true,
+    },
+    body: {
+      describe: "Note body",
+      type: "string",
+      demandOption: true,
+    },
+  },
+  handler: function (argv) {
+    updateNote(argv.title, argv.newTitle, argv.body);
   },
 });
 
