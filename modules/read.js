@@ -1,8 +1,8 @@
 const loadNotes = require("./load");
 
 const readNote = function (title) {
-  const notes = loadNotes();
-  return notes.find((note) => note.title === title);
+  const note = loadNotes().find((note) => note.title === title);
+  console.log('Note found: ', note);
 };
 
 module.exports = readNote;
