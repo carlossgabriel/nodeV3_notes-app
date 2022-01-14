@@ -1,5 +1,40 @@
-# JS t another to-do terminal app
+# notes-cm
 
-App built based on [The Complete Node.js Developer Course (3rd Edition) module 1](https://www.udemy.com/course/the-complete-nodejs-developer-course-2/)
+> Notes app built to run on comand line, based on <a href="https://www.udemy.com/course/the-complete-nodejs-developer-course-2/">The Complete Node.js Developer Course</a>
 
-Clone the repository, run yarn, and then you're good to go
+
+## 💻 Prerequisites
+
+- [ ] `node && npm`
+
+
+## 🚀 Installing
+```sh
+npm i
+```
+
+## ☕ Using <notes-cm>
+###Add
+```sh
+node app.js add --title="<TITLE>" --body="<BODY>"
+```
+
+###Remove
+```sh
+node app.js remove --title="<TITLE>"
+```
+
+###List
+```sh
+node app.js list
+```
+
+###Read
+```sh
+node app.js read --title="<TITLE>"
+```
+
+###Update
+```sh
+node app.js update --title="<TITLE>" --newTitle="<NEW TITLE>" --body="<BODY>"
+```
